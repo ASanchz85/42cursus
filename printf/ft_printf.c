@@ -6,13 +6,13 @@
 /*   By: ansanche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:49:52 by ansanche          #+#    #+#             */
-/*   Updated: 2022/04/28 23:21:54 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/04/29 20:20:25 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_write(char str)
+int	ft_write(unsigned char str)
 {
 	write(1, &str, 1);
 	return (1);
@@ -42,15 +42,15 @@ int	ft_conditions(char *str, va_list ap)
 
 	count = 0;
 	if (str == 'c')
-		count += ft_write(unsigned char(va_arg(ap, int)));
+		count += ft_write(unsigned char (va_arg(ap, int)));
 	if (str == 's')
 		count += ft_write_str(va_arg(ap, char *));
 	if (str == 'p')
-		count += ft_hexa_ptr(unsigned long long int(va_arg(ap, void *)));
+		count += ft_hexa(unsigned long long int (va_arg(ap, void *)), str);
 	if (str == 'd' || str == 'i')
-		count += ft_write_nbr(long long int(va_arg(ap, int)));
+		count += ft_write_nbr(unsigned int (va_arg(ap, int)));
 	if (str == 'u')
-		count += ft_write_nbr(long long int(va_arg(ap, unsigned int)));
+		count += ft_write_nbr(unsigned int (va_arg(ap, unsigned int)));
 	if (str == 'x' || str == 'X')
 		count += ft_hexa(va_arg(ap, unsigned int), str);
 	if (str == '%')
@@ -78,7 +78,10 @@ int	ft_printf(char const *str, ...)
 			i++;
 		}
 		else
+		{
 			write(1, &str, 1);
+			count++;
+		}
 		i++;
 	}
 	va_end(ap, str);
