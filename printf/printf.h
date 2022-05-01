@@ -6,7 +6,7 @@
 /*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:13:25 by ansanche          #+#    #+#             */
-/*   Updated: 2022/04/29 20:15:42 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:08:21 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 
 int	ft_write(unsigned char str);
 int	ft_write_str(char *str);
-int	ft_conditions(char *str, va_list ap);
-int	ft_printf(char const *str, ...);
+int	ft_conditions(char str, va_list ap);
 int	ft_recursive_nbr(unsigned long int backup);
 int	ft_write_nbr(long int nbr);
-int	ft_hexa_recursive(unsigned long long int hexa_nbr, char *hexa_nbr);
-int	ft_hexa(long long int hexa, char str);
+int	ft_hexa_recursive(unsigned long long int hexa_nbr, char *base);
+int	ft_hexa(unsigned long long hexa, char str);
+int	ft_printf(char const *str, ...);
 
 #endif

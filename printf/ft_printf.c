@@ -6,7 +6,7 @@
 /*   By: ansanche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:49:52 by ansanche          #+#    #+#             */
-/*   Updated: 2022/04/29 20:20:25 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:31:02 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,32 @@ int	ft_write_str(char *str)
 	i = 0;
 	if (!str)
 	{
-		write(1, "(null)", 1)
+		write(1, "(null)", 1);
 		return (6);
 	}
 	while (str[i])
 	{
-		write(1, &str, 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 	return (i);
 }
 
-int	ft_conditions(char *str, va_list ap)
+int	ft_conditions(char str, va_list ap)
 {
 	int	count;
 
 	count = 0;
 	if (str == 'c')
-		count += ft_write(unsigned char (va_arg(ap, int)));
+		count += ft_write(va_arg(ap, int));
 	if (str == 's')
 		count += ft_write_str(va_arg(ap, char *));
 	if (str == 'p')
-		count += ft_hexa(unsigned long long int (va_arg(ap, void *)), str);
+		count += ft_hexa((unsigned long long)va_arg(ap, void *), str);
 	if (str == 'd' || str == 'i')
-		count += ft_write_nbr(unsigned int (va_arg(ap, int)));
+		count += ft_write_nbr(va_arg(ap, int));
 	if (str == 'u')
-		count += ft_write_nbr(unsigned int (va_arg(ap, unsigned int)));
+		count += ft_write_nbr(va_arg(ap, unsigned int));
 	if (str == 'x' || str == 'X')
 		count += ft_hexa(va_arg(ap, unsigned int), str);
 	if (str == '%')
@@ -79,11 +79,11 @@ int	ft_printf(char const *str, ...)
 		}
 		else
 		{
-			write(1, &str, 1);
+			write(1, &str[i], 1);
 			count++;
 		}
 		i++;
 	}
-	va_end(ap, str);
+	va_end(ap);
 	return (count);
 }
