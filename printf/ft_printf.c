@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ansanche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 20:49:52 by ansanche          #+#    #+#             */
-/*   Updated: 2022/05/01 20:31:02 by ansanche         ###   ########.fr       */
+/*   Created: 2022/05/05 18:58:16 by ansanche          #+#    #+#             */
+/*   Updated: 2022/05/05 21:23:47 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_write(unsigned char str)
+static int	ft_write(unsigned char str)
 {
 	write(1, &str, 1);
 	return (1);
 }
 
-int	ft_write_str(char *str)
+static int	ft_write_str(char *str)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int	ft_write_str(char *str)
 	return (i);
 }
 
-int	ft_conditions(char str, va_list ap)
+static int	ft_conditions(char str, va_list ap)
 {
 	int	count;
 

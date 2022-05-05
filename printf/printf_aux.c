@@ -6,7 +6,7 @@
 /*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:52:52 by ansanche          #+#    #+#             */
-/*   Updated: 2022/05/01 20:30:44 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:32:24 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_hexa_recursive(unsigned long long int hexa_nbr, char *base)
 		count += ft_hexa_recursive(hexa_nbr / 16, base);
 		hexa_nbr %= 16;
 	}
-	write(1, &base[hexa_nbr - 1], 1);
+	write(1, &base[hexa_nbr], 1);
 	return (count);
 }
 
