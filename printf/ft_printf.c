@@ -6,11 +6,11 @@
 /*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:58:16 by ansanche          #+#    #+#             */
-/*   Updated: 2022/05/05 21:23:47 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/05/07 20:11:54 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static int	ft_write(unsigned char str)
 {
@@ -23,9 +23,9 @@ static int	ft_write_str(char *str)
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (!str || str == NULL)
 	{
-		write(1, "(null)", 1);
+		write(1, "(null)", 6);
 		return (6);
 	}
 	while (str[i])
