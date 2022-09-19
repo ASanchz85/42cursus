@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 17:45:40 by ansanche          #+#    #+#             */
-/*   Updated: 2022/09/18 13:32:47 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/09/19 20:17:02 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static char	*ft_totaljoin(char *buffer, char *new)
 {
@@ -83,7 +83,7 @@ char	*ft_readfile(int fd, char *str)
 			free(buffer);
 			return (NULL);
 		}
-		buffer[count] = 0;
+		buffer[count] = '\0';
 		str = ft_totaljoin(str, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
@@ -94,37 +94,32 @@ char	*ft_readfile(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*bufferi[OPEN_MAX];
+	static char	*buffer;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer[fd] = readfile(fd, buffer[fd]);
-	if (!buffer[fd])
+	buffer = ft_readfile(fd, buffer);
+	if (!buffer)
 		return (NULL);
-	line = ft_line(buffer[fd]);
-	buffer[fd] = ft_nextline(buffer[fd]);
+	line = ft_line(buffer);
+	buffer = ft_nextline(buffer);
 	return (line);
 }
 /*
-int	main(int argc, char **argv)
+int	main()
 {
-	char	*s;
+	char	*s = "";
 	int		fd;
-	int		fd2;
 	int		x;
 
 	x = 0;
-	fd = open("lorem.txt", O_RDONLY);
-	fd2 = open("lorem2.txt", O_RDONLY);
-	while (x < 10)
+	fd = open("./TESTERgnl/files/41_no_nl", O_RDONLY);
+	while (x < 2)
 	{
 		s = get_next_line(fd);
-		printf("%s", s);
-		s = get_next_line(fd2);
-		printf("%s", s);
+		printf("%s\n", s);
 		x++;
 	}
 	close(fd);
-	close(fd2);
 }*/

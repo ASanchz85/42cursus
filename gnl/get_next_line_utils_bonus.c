@@ -6,7 +6,7 @@
 /*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 17:45:56 by ansanche          #+#    #+#             */
-/*   Updated: 2022/09/18 13:37:01 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/09/19 19:17:15 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (0);
-	new = malloc((ft_strlen(s1) + st_strlen(s2) + 1) * sizeof(char));
+	new = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!new)
 		return (0);
 	while (s1[i] != '\0')
@@ -46,7 +46,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		new[i] = s1[i];
 		i++;
 	}
-	while (s2[i] != '\0')
+	while (s2[j] != '\0')
 	{
 		new[i] = s2[j];
 		j++;

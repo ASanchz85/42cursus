@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansanche <ansanche@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 17:45:40 by ansanche          #+#    #+#             */
-/*   Updated: 2022/09/18 13:23:18 by ansanche         ###   ########.fr       */
+/*   Updated: 2022/09/19 20:21:22 by ansanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_totaljoin(char *buffer, char *new)
 {
@@ -94,32 +94,37 @@ char	*ft_readfile(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = readfile(fd, buffer);
-	if (!buffer)
+	buffer[fd] = ft_readfile(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_line(buffer);
-	buffer = ft_nextline(buffer);
+	line = ft_line(buffer[fd]);
+	buffer[fd] = ft_nextline(buffer[fd]);
 	return (line);
 }
 /*
-int	main(int argc, char **argv)
+int	main()
 {
 	char	*s;
 	int		fd;
+	int		fd2;
 	int		x;
 
 	x = 0;
 	fd = open("lorem.txt", O_RDONLY);
-	while (x < 1000)
+	fd2 = open("lorem2.txt", O_RDONLY);
+	while (x < 10)
 	{
 		s = get_next_line(fd);
+		printf("%s", s);
+		s = get_next_line(fd2);
 		printf("%s", s);
 		x++;
 	}
 	close(fd);
+	close(fd2);
 }*/
