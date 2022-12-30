@@ -1,3 +1,22 @@
+    [!]Script de información del sistema
+Este script muestra información detallada sobre el sistema en el que se ejecuta. Al ejecutar el script, se mostrará información sobre la arquitectura del sistema, el uso de la CPU y la memoria, el uso del disco duro, la carga de la CPU, la última vez que se inició el sistema, si se está utilizando LVM (Logical Volume Manager), el número de conexiones TCP establecidas, el número de usuarios conectados al sistema y la dirección IP del sistema.
+
+    [!]Uso
+Para ejecutar el script, primero debe hacerlo ejecutable con el comando chmod +x nombre_del_script.sh. Luego, puede ejecutar el script con el comando ./nombre_del_script.sh.
+
+    [!]Dependencias
+El script utiliza varios comandos del sistema, como hostnamectl, awk, cut, uniq, sed, cat, wc, free, df, top, who, lsblk, netstat, hostname e ip, por lo que asegúrese de que estos comandos estén disponibles en su sistema.
+
+    [!]Salida
+Aquí hay un ejemplo de la salida del script:
+
+#Architecture: CentOS Linux 8 (Core) x86_64
+#CPU physical: 1
+#vCPU:  1
+#Memory Usage: 
+
+    [!]Explicación detallada
+
 1- "#!/bin/bash" indica que el script debe interpretarse con el intérprete de comandos "bash".
 
 2- "wall $'#Architecture: ' hostnamectl | grep 'Operating System' | cut -d ' ' -f5- awk -F':' '/^model name/ {print $2}' /proc/cpuinfo | uniq | sed -e 's/^[ \t]*//' arch" envía un mensaje a todos los usuarios conectados al sistema con la siguiente información:
